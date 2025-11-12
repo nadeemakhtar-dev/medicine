@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import medicineRoutes from "./routes/medicineRoutes.js";
+import medicineRoutes from "../routes/medicineRoutes.js";
 
 dotenv.config();
 
@@ -18,5 +18,9 @@ mongoose
 
 app.use("/api/medicines", medicineRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+// ❌ Don't use app.listen() on Vercel
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+// ✅ Export app instead
+export default app;
