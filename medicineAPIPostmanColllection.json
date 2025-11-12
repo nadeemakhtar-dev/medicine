@@ -1,0 +1,145 @@
+{
+  "info": {
+    "name": "Medicine API Collection",
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "description": "Postman collection to test all endpoints in your Node.js + MongoDB Medicine API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "🔹 Get All Medicines",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/medicines",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "medicines"]
+        }
+      }
+    },
+    {
+      "name": "🔹 Add New Medicine",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sub_category\": \"Non Narcotics And Anti Pyretics\",\n  \"product_name\": \"Fepanil 650 Tablet\",\n  \"salt_composition\": \"Paracetamol (650mg)\",\n  \"product_price\": \"₹15\",\n  \"product_manufactured\": \"Veritaz Healthcare Ltd\",\n  \"medicine_desc\": \"Fepanil 650 Tablet is a medicine used to relieve pain and to reduce fever.\",\n  \"side_effects\": \"Stomach pain, Nausea, Vomiting\",\n  \"drug_interactions\": \"{\\\"drug\\\": [\\\"Nimesulide\\\", \\\"Oxyphenbutazone\\\", \\\"Metamizole\\\"], \\\"brand\\\": [\\\"Nimsun\\\", \\\"Oxy Triactin\\\", \\\"Pyregin\\\"], \\\"effect\\\": [\\\"LIFE-THREATENING\\\", \\\"LIFE-THREATENING\\\", \\\"LIFE-THREATENING\\\"]}\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/medicines",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "medicines"]
+        }
+      }
+    },
+    {
+      "name": "🔹 Get Medicine by Name (?name=)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/medicines?name=Fepanil",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "medicines"],
+          "query": [{ "key": "name", "value": "Fepanil" }]
+        }
+      }
+    },
+    {
+      "name": "🔹 Search by Product Name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/medicines/search/name?name=fepanil",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "medicines", "search", "name"],
+          "query": [{ "key": "name", "value": "fepanil" }]
+        }
+      }
+    },
+    {
+      "name": "🔹 Search by Sub Category",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/medicines/search/category?sub_category=Non Narcotics",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "medicines", "search", "category"],
+          "query": [{ "key": "sub_category", "value": "Non Narcotics" }]
+        }
+      }
+    },
+    {
+      "name": "🔹 Smart Search (?query=)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/medicines/search?query=Insulin 40IU/ml Injection",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "medicines", "search"],
+          "query": [{ "key": "query", "value": "Insulin 40IU/ml Injection" }]
+        }
+      }
+    },
+    {
+      "name": "🔹 Debug Search (Flexible Match)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/medicines/search?query=fepanil",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "medicines", "search"],
+          "query": [{ "key": "query", "value": "fepanil" }]
+        }
+      }
+    },
+    {
+      "name": "🔹 Debug Route #1 (Raw Mongo Query)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/api/medicines/debug/all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "medicines", "debug", "all"]
+        }
+      }
+    },
+    {
+      "name": "🔹 Debug Route #2 (Model Query Test)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/api/medicines/debug/test",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "medicines", "debug", "test"]
+        }
+      }
+    }
+  ]
+}
